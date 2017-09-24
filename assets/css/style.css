@@ -1,0 +1,71 @@
+body {
+	background-color: black;
+	padding: 0px 300px;
+}
+
+.gamepicture {
+	float: left;
+	position: absolute;
+	top: 0;
+	left: 25%;
+	height: 30%;
+	z-index: -1;
+}
+
+#titlepage {
+	text-align: center;
+	margin-top: 10px;
+	font-size: 100px;
+	font-style: italic;
+	color: #654321;
+	text-shadow: 0 0 10px white;
+}
+
+#subtitle {
+	text-align: center;
+	font-family: 'Leckerli One', cursive;
+	font-size: 60px;
+	font-style: italic;
+	color: #1C2F54;
+	text-shadow: 0 0 10px #54411C;
+	transform: rotate(-10deg);
+	width: 50%;
+	position: absolute;
+	top: 1%;
+	left: 50%;
+}
+
+.panel {
+	text-align: center;
+	border: 5px dotted white;
+	margin-top: 0px;
+	height: 517px;
+	width: 717px;
+}
+
+.replacepicture {
+	text-align: center;
+	width: 250px;
+	padding: 10px 40px;
+	position: relative;
+	float: left;
+}
+	
+.fence {
+	background-image: url(../images/background.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	z-index: 2;
+	background-color: #4aaaa5;
+    position: absolute;
+    width: 717px;
+    height: 516px;
+    z-index: -2;
+}
+
+p {
+	text-align: center;
+	color: white;
+	font-size: 25px;
+	font-style: italic;
+}
