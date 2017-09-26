@@ -3,7 +3,8 @@ var wordBank = ["Cotton Eye Joe", "Backwords", "Chicken Fried", "Lay Low", "Onli
 
 var randNum = wordBank[Math.floor(Math.random() * wordBank.length)];
 
-var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "z"];
+// var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
+// "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "z"];
 
 var randomWord = randNum;
 
@@ -48,8 +49,7 @@ console.log(underscore);
  	alert(userkey);
  	};
 
-// Comparing the user letter guess to each letter of the random word
-
+// Comparing the user key to each letter of the random word
 
 var reset = randomWord.toLowerCase();
 
@@ -68,7 +68,16 @@ var reset = randomWord.toLowerCase();
  	 		console.log("Wrong guess")
  	 	}
 
+ // If the user key is correct, replace the dash on the homepage that corresponds to the random word of that position of the letter
+ // Then put the letter that the user guessed in the list of "letters already used"
+
+ // If the user key is incorrect, 
+ // the "guesses left" goes down and put the user key letter in the list of "letters already used"
+
+ // If all the letters are guess in the random word, then the "Wins" count increases and a new word reappears.
  	 
+ // If the guesses left reach 0, game's over.
+
 };
 };
 
