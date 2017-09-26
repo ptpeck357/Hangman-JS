@@ -3,52 +3,57 @@ body {
 	padding: 0px 300px;
 }
 
+.container {
+	width: 100%;
+}
+
 .gamepicture {
 	float: left;
 	position: absolute;
 	top: 0;
-	left: 25%;
-	height: 30%;
+	left: 325px;
+	height: 190px;
 	z-index: -1;
 }
 
 #titlepage {
-	text-align: center;
 	margin-top: 10px;
 	font-size: 100px;
 	font-style: italic;
 	color: #654321;
 	text-shadow: 0 0 10px white;
+	position: relative;
+	top: 0;
+	left: 135px;
 }
 
 #subtitle {
-	text-align: center;
 	font-family: 'Leckerli One', cursive;
-	font-size: 60px;
+	font-size: 45px;
 	font-style: italic;
-	color: #1C2F54;
-	text-shadow: 0 0 10px #54411C;
+	color: #8B4513;
+	text-shadow: 0 0 10px white;
 	transform: rotate(-10deg);
-	width: 50%;
 	position: absolute;
-	top: 1%;
-	left: 50%;
+	top: 30px;
+	left: 600px;
+	z-index: -1;
+}
+
+.hat {
+	z-index: 2;
+	width: 75px;
+	position: absolute;
+	top: 125px;
+	left: 950px;
 }
 
 .panel {
 	text-align: center;
 	border: 5px dotted white;
 	margin-top: 0px;
-	height: 517px;
+	height: 400px;
 	width: 717px;
-}
-
-.replacepicture {
-	text-align: center;
-	width: 250px;
-	padding: 10px 40px;
-	position: relative;
-	float: left;
 }
 	
 .fence {
@@ -59,13 +64,56 @@ body {
 	background-color: #4aaaa5;
     position: absolute;
     width: 717px;
-    height: 516px;
+    height: 400px;
     z-index: -2;
 }
 
-p {
+.getstarted {
 	text-align: center;
 	color: white;
 	font-size: 25px;
 	font-style: italic;
+	margin-top: 15px;
 }
+
+.wins{
+	text-align: center;
+	color: white;
+	font-size: 25px;
+	font-style: italic;
+	margin-top: 15px;
+}
+
+.currentword {
+	text-align: center;
+	color: white;
+	font-size: 25px;
+	font-style: italic;
+	margin-top: 25px;
+}
+
+#dash {
+	text-align: center;
+	color: white;
+	font-size: 25px;
+ 	letter-spacing: 15px;
+ 	margin-top: 5px;
+ 	line-height: 50px;
+}
+
+.guessesleft {
+	text-align: center;
+	color: white;
+	font-size: 25px;
+	font-style: italic;
+	margin-top: 20px;
+}
+
+.lettersguessed {
+	text-align: center;
+	color: white;
+	font-size: 25px;
+	font-style: italic;
+	margin-top: 40px;
+}
+
