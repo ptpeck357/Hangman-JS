@@ -25,7 +25,7 @@ var underscore = [];
  			else {
  				underscore.push('_');
  			}
-};
+}
 
 
 // Linking the dashes to the HTML homepage
@@ -34,7 +34,7 @@ window.onload = function() {
 
 var word = document.getElementById("dash");
 
-word.innerHTML = underscore;
+word.innerHTML = underscore.join(" ");
 
 console.log(randomWord);
 
