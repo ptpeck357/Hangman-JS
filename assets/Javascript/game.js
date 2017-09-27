@@ -3,8 +3,8 @@ var wordBank = ["Cotton Eye Joe", "Backwords", "Chicken Fried", "Lay Low", "Onli
 
 var randNum = wordBank[Math.floor(Math.random() * wordBank.length)];
 
-// var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
-// "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "z"];
+var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
+"n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "z"];
 
 var randomWord = randNum;
 
@@ -45,9 +45,12 @@ console.log(underscore);
  document.onkeydown = function(event) {
 
  	var userkey = event.key;
- 		if(userkey = alphabet) {
+ 	for (var i = 0; i < alphabet.length; i++) {
+ 	
+ 		if(userkey === alphabet[i]) {
  	alert(userkey);
- 	};
+ }
+ 	}
 
 // Comparing the user key to each letter of the random word
 
