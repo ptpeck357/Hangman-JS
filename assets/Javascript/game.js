@@ -23,7 +23,7 @@ var underscore = [];
  			}
 
  			else {
- 				underscore.push('_');
+ 				underscore.push('_')
  			}
 }
 
@@ -48,29 +48,37 @@ console.log(underscore);
  	for (var i = 0; i < alphabet.length; i++) {
  	
  		if(userkey === alphabet[i]) {
- 	alert(userkey);
+
+ 			var confirmkey = true;
+
  }
  	}
 
 // Comparing the user key to each letter of the random word
+	if (confirmkey === true) {
 
-var reset = randomWord.toLowerCase();
+		var reset = randomWord.toLowerCase();
 
- 	 	if(userkey === reset[i]){
+			for (var i = 0; i < reset.length; i++) {
+				reset[i];
+			}
 
- 	 		console.log("it works");
+				if(userkey == reset[i]) {
 
- 	 	}
+ 	 				console.log("it works");
 
- 	 	else if (userkey !== reset[i]){
+ 	 			}
+ 	 	
+			else {
 
- 	 		guessesleft--;
+ 	 			guessesleft--;
 
- 	 		console.log(guessesleft);
+ 	 			console.log(guessesleft);
 
- 	 		console.log("Wrong guess")
- 	 	}
-
+ 	 			console.log("Wrong guess");
+ 	 	
+ 	 }
+ }
  // If the user key is correct, replace the dash on the homepage that corresponds to the random word of that position of the letter
  // Then put the letter that the user guessed in the list of "letters already used"
 
