@@ -1,12 +1,11 @@
+// Variables defined
 
 var wordBank = ["Cotton Eye Joe", "Backwords", "Chicken Fried", "Lay Low", "Online", "Radio", "Sold", "Cruise", "Wanted", "Unforgettable"];
 
-var randNum = wordBank[Math.floor(Math.random() * wordBank.length)];
+var randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
 "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "z"];
-
-var randomWord = randNum;
 
 var guessesleft = 12;
 
@@ -14,10 +13,12 @@ var wins = 0;
 
 var underscore = [];
 
+var confirmkey = false;
 
 // creating dashes for the length of the random word
 
  	for (var i = 0; i < randomWord.length; i++) {
+
  			if (randomWord.charAt(i) === ' ') {
  				underscore.push(' ')
  			}
@@ -42,43 +43,41 @@ console.log(underscore);
  	
 
 // Determining what key the user pressed
- document.onkeydown = function(event) {
+
+document.onkeydown = function(event) {
 
  	var userkey = event.key;
+
  	for (var i = 0; i < alphabet.length; i++) {
  	
  		if(userkey === alphabet[i]) {
-
- 			var confirmkey = true;
-
- }
+ 			confirmkey = true;
+ 			console.log("The user pressed a letter");
+ 		}
  	}
 
+
 // Comparing the user key to each letter of the random word
-	if (confirmkey === true) {
+
+	if (confirmkey = true) {
 
 		var reset = randomWord.toLowerCase();
 
 			for (var i = 0; i < reset.length; i++) {
-				reset[i];
-			}
 
-				if(userkey == reset[i]) {
-
- 	 				console.log("it works");
-
+				if(userkey === reset[i]) {
+ 	 				confirmletter = true;
+ 	 				console.log(confirmletter);
  	 			}
- 	 	
-			else {
 
- 	 			guessesleft--;
+				else if(userkey != reset[i]) {
+		 	 		confirmletter = false;
+		 	 		console.log(confirmletter);
+	 	 		}
+			}
+ 	}
+}
 
- 	 			console.log(guessesleft);
-
- 	 			console.log("Wrong guess");
- 	 	
- 	 }
- }
  // If the user key is correct, replace the dash on the homepage that corresponds to the random word of that position of the letter
  // Then put the letter that the user guessed in the list of "letters already used"
 
@@ -90,6 +89,6 @@ console.log(underscore);
  // If the guesses left reach 0, game's over.
 
 };
-};
+
 
  	
