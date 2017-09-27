@@ -92,6 +92,12 @@ body {
 	margin-top: 25px;
 }
 
+#currentword {
+	text-align: center;
+	color: white;
+	font-size: 25px;
+}
+
 #dash {
 	text-align: center;
 	color: white;
@@ -115,5 +121,10 @@ body {
 	font-size: 25px;
 	font-style: italic;
 	margin-top: 40px;
+}
+
+#lettersalreadyguessed{
+	width: 717px;
+	height: 90px;
 }
 

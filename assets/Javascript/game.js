@@ -1,6 +1,7 @@
 // Variables defined
+window.onload = function() {
 
-var wordBank = ["Cotton Eye Joe", "Backwords", "Chicken Fried", "Lay Low", "Online", "Radio", "Sold", "Cruise", "Wanted", "Unforgettable"];
+var wordBank = ["Backwords", "Online", "Radio", "Sold", "Cruise", "Wanted", "Unforgettable", "Stay", "Vacation", "Beaching"];
 
 var randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 
@@ -13,82 +14,104 @@ var wins = 0;
 
 var underscore = [];
 
-var confirmkey = false;
+var flag = false;
+
+var stop = 0;
+
 
 // creating dashes for the length of the random word
-
+	
  	for (var i = 0; i < randomWord.length; i++) {
-
- 			if (randomWord.charAt(i) === ' ') {
- 				underscore.push(' ')
- 			}
-
- 			else {
  				underscore.push('_')
- 			}
-}
+	}
 
 
 // Linking the dashes to the HTML homepage
+var underline = document.getElementById("dash");
 
-window.onload = function() {
-
-var word = document.getElementById("dash");
-
-word.innerHTML = underscore.join(" ");
+underline.innerHTML = underscore.join(" ");
 
 console.log(randomWord);
 
 console.log(underscore);
- 	
+
 
 // Determining what key the user pressed
-
 document.onkeydown = function(event) {
 
  	var userkey = event.key;
 
+ 	var lowercaseword = randomWord.toLowerCase();
+
+ 	var str = document.getElementById("lettersalreadyguessed");
+
+	var pelement = document.createElement("p");
+
+	var current = document.getElementById("currentword");
+
+	var guessescorrect = document.createElement("p");
+
+
  	for (var i = 0; i < alphabet.length; i++) {
  	
  		if(userkey === alphabet[i]) {
- 			confirmkey = true;
- 			console.log("The user pressed a letter");
+ 			flag = true;
+ 			console.log("Its a letter");
  		}
  	}
 
-
+ 	
 // Comparing the user key to each letter of the random word
 
-	if (confirmkey = true) {
+/* If the user key is correct, replace the dash on the homepage that corresponds to the 
+ random word of that position of the letter*/
+	if(flag = true){
 
-		var reset = randomWord.toLowerCase();
+		// Figure how to add letters without creating whole new element
+	 	for (var i = 0; i < lowercaseword.length; i++) {
 
-			for (var i = 0; i < reset.length; i++) {
+			if(userkey === lowercaseword[i]) {		
+				guessescorrect.innerHTML = userkey;
+				current.appendChild(guessescorrect);
+				stop = 1;
+	 	 	}
+	 	 }
 
-				if(userkey === reset[i]) {
- 	 				confirmletter = true;
- 	 				console.log(confirmletter);
- 	 			}
+		if(stop = 0){
+			guessesleft--;
+			console.log(guessesleft)
+		}
 
-				else if(userkey != reset[i]) {
-		 	 		confirmletter = false;
-		 	 		console.log(confirmletter);
-	 	 		}
-			}
- 	}
-}
 
- // If the user key is correct, replace the dash on the homepage that corresponds to the random word of that position of the letter
- // Then put the letter that the user guessed in the list of "letters already used"
+// If the letter the user inputed is correct or incorrect, put it in the list of "Letters already guessed"
+		if((stop = 1) || (stop = 0)) {
+		 	pelement.innerHTML= userkey;
+		 	str.appendChild(pelement);
+		 }
+	}
 
- // If the user key is incorrect, 
- // the "guesses left" goes down and put the user key letter in the list of "letters already used"
+// If the user key is incorrect.
 
- // If all the letters are guess in the random word, then the "Wins" count increases and a new word reappears.
+		
+
+ 
+
+// If all the letters are guess in the random word, then the "Wins" count increases and a new word reappears.
  	 
- // If the guesses left reach 0, game's over.
+// If the guesses left reach 0, game's over.
+
+ }
+
+
 
 };
+
+ 
+
+
+
+
+
 
 
  	
