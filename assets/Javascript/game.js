@@ -1,117 +1,159 @@
 // Variables defined
-window.onload = function() {
+var wordBank = ["backwords", "online", "radio", "sold", "cruise", "wanted", "unforgettable", "stay", "vacation", "beaching"];
 
-var wordBank = ["Backwords", "Online", "Radio", "Sold", "Cruise", "Wanted", "Unforgettable", "Stay", "Vacation", "Beaching"];
+var randomWord = "";
 
-var randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+var lettersInWord = [];
 
-var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
-"n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "z"];
-
-var guessesleft = 12;
-
-var wins = 0;
+//holds number of blanks in solution
+var numBlanks = 0;
 
 var underscore = [];
 
-var flag = false;
+// Holds all of the wrong guesses
+var wrongGuesses = [];
 
-var stop = 0;
+var wins = 0;
 
+var turns = 12;
 
-// creating dashes for the length of the random word
+function startGame() {
+	//HERE YOU MAKE SURE THAT YOU EARLIER ROUNDS OF CODE DON'T AFFECT YOUR VARIABLES
+			// CRITICAL LINE - Here we *reset* LETTERSINWORD array at each round.
+		  	lettersInWord = [];
+
+		  	// CRITICAL LINE - Here we *reset* the wrong guesses from the previous round.
+		  	wrongGuesses = [];
+
+		  	// Here we reset the number of guesses the user has remaining before they loose
+		  	turns = 12;
+
+		  	document.getElementById("turns")
+		  	turns.innerHTML=turns;
+
+	//THIS IS WHERE YOU SELECT A RANDOM WORD FROM YOUR WORD BANK
+	randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+
+	//YOU TOOK THE WORD AND SPLIT IT INTO INDIVIDUAL LETTERS
+	underscore = randomWord.split ("");
+	console.log("underscore:" + underscore);
+
+	//DETERMINE LENGTH OF WORD HERE WITH .LENGTH AND SET IT TO VAR NUMBLANKS
+	numBlanks = underscore.length;
+	console.log("numblanks" + numBlanks);
+
+	// creating dashes for the length of the random word
 	
  	for (var i = 0; i < randomWord.length; i++) {
- 				underscore.push('_')
+ 		lettersInWord.push("_");
 	}
 
+	console.log(lettersInWord);
 
-// Linking the dashes to the HTML homepage
-var underline = document.getElementById("dash");
+	//INSERT INTO HTML DASHES & WRONG GUESSES
 
-underline.innerHTML = underscore.join(" ");
+	// Linking the dashes to the HTML homepage
+	var underline = document.getElementById("dash")
+	underline.innerHTML = lettersInWord.join (" ");
 
-console.log(randomWord);
+	// Clears the wrong guesses from the previous round
+  	document.getElementById("lettersalreadyguessed").innerHTML = wrongGuesses.join(" ");
 
-console.log(underscore);
-
+}
 
 // Determining what key the user pressed
 document.onkeydown = function(event) {
+	var userkey = event.key;
+	console.log(userkey);
+	checkLetters(userkey);
+}
 
- 	var userkey = event.key;
-
- 	var lowercaseword = randomWord.toLowerCase();
-
- 	var str = document.getElementById("lettersalreadyguessed");
-
-	var pelement = document.createElement("p");
-
-	var current = document.getElementById("currentword");
-
-	var guessescorrect = document.createElement("p");
-
-
- 	for (var i = 0; i < alphabet.length; i++) {
+// Checks the user's letter to see if it's a letter or not
+function checkLetters(userkey) {
+	var flag = false;
+	for (var i = 0; i < numBlanks; i++) {
  	
- 		if(userkey === alphabet[i]) {
+ 		if(randomWord[i] === userkey) {
  			flag = true;
- 			console.log("Its a letter");
+ 			console.log("It's a letter");
  		}
  	}
 
- 	
-// Comparing the user key to each letter of the random word
 
-/* If the user key is correct, replace the dash on the homepage that corresponds to the 
- random word of that position of the letter*/
-	if(flag = true){
+	// If the letter exists somewhere in the word, then figure out exactly where (which indices).
+	  if (flag) {
 
-		// Figure how to add letters without creating whole new element
-	 	for (var i = 0; i < lowercaseword.length; i++) {
+	    // Loop through the word.
+	    for (var i = 0; i < numBlanks; i++) {
 
-			if(userkey === lowercaseword[i]) {		
-				guessescorrect.innerHTML = userkey;
-				current.appendChild(guessescorrect);
-				stop = 1;
-	 	 	}
-	 	 }
+	      // Populate the blanksAndSuccesses with every instance of the letter.
+	      if (randomWord[i] === userkey) {
+	        // Here we set the specific space in blanks and letter equal to the letter when there is a match.
+	        lettersInWord[i] = userkey;
+	      }
+	    }
+	    // Logging for testing.
+	    console.log(lettersInWord);
+	  }
+	  // If the letter doesn't exist at all...
+	  else {
 
-		if(stop = 0){
-			guessesleft--;
-			console.log(guessesleft)
+	  	//Make sure the letters don't overlap in the list of wrong letters
+	    if(userkey !== wrongGuesses[i]){
+
+	    // ..then we add the letter to the list of wrong letters, and we subtract one of the guesses.
+	    wrongGuesses.push(userkey);
+
+	    // numGuesses--;
+	    turns--;
+  		document.getElementById("turns").innerHTML = turns;
+  		}	
+	  }
+
+	  roundComplete();
+
+}
+
+function roundComplete() {
+
+  document.getElementById("dash").innerHTML = lettersInWord.join(" ");
+
+
+  // This will print the wrong guesses onto the page.
+  document.getElementById("lettersalreadyguessed").innerHTML = wrongGuesses.join(" ");
+
+
+	// If we have gotten all the letters to match the solution...
+  if (lettersInWord.toString() === underscore.toString()) {
+
+	    // ..add to the win counter & give the user an alert.
+		alert("You win");
+		console.log("You win!");
+
+		//add to wins
+		wins++;
+		document.getElementById("ptsinceasing").innerHTML=wins;
+		
+		// Variable where we ask if the user wants to play again
+		var confirmplay = confirm("Do you want to play again?")
+
+		   if(confirmplay) {
+		    startGame();
 		}
-
-
-// If the letter the user inputed is correct or incorrect, put it in the list of "Letters already guessed"
-		if((stop = 1) || (stop = 0)) {
-		 	pelement.innerHTML= userkey;
-		 	str.appendChild(pelement);
-		 }
 	}
 
-// If the user key is incorrect.
+	// include condition where you won't win. this would be. turns === 0 so you lose and then startGame();
+	
 
-		
+	  	if (turns==0) {
+	  		alert("You loose")
+			var declineplay = confirm("Do you want to play again?")
+	  	} 
 
- 
+	  	if (declineplay) {
+	  		startGame();
+	  	}
+}
 
-// If all the letters are guess in the random word, then the "Wins" count increases and a new word reappears.
- 	 
-// If the guesses left reach 0, game's over.
-
- }
-
-
-
-};
-
- 
-
-
-
-
-
-
-
- 	
+//CALL STARTGAME FUNCTION
+startGame();

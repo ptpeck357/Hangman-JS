@@ -7,8 +7,6 @@
 
 	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 
-	<script src="./assets/javascript/game.js"></script>
-
 	<link href="https://fonts.googleapis.com/css?family=Leckerli+One" rel="stylesheet">
 
 </head>
@@ -38,19 +36,20 @@
 			
 			<div class="fence">
 			</div>
-
 			
 				<div class="getstarted"><strong>Press any letter on the keyboard to get started!</strong></div>	
 
-				<div class="wins"><strong>Wins <div id="ptsinceasing"></div></strong></div>
+				<div class="wins"><strong>Wins <div id="ptsinceasing">0</div></strong></div>
 
 				<div class="currentword"><strong>Current word <div id = currentword></div></strong></div>
 
 				<div id="dash"></div>
 
-				<div class="guessesleft"><strong>Number of guesses remaining</strong></div>
+				<div class="guessesleft"><strong>Number of guesses remaining<div id="turns">12</div></strong></div>
 
 				<div class="lettersguessed"><strong>Letters already guessed <p id="lettersalreadyguessed"></p></strong></div>
+
+			<script src="./assets/javascript/game.js"></script>
 
 		</div>
 		

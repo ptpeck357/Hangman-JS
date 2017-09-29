@@ -89,7 +89,7 @@ body {
 	color: white;
 	font-size: 25px;
 	font-style: italic;
-	margin-top: 25px;
+	margin-top: 0px;
 }
 
 #currentword {
@@ -112,7 +112,12 @@ body {
 	color: white;
 	font-size: 25px;
 	font-style: italic;
+	margin-top: 0px;
+}
+
+#turns {
 	margin-top: 20px;
+	text-align: center;
 }
 
 .lettersguessed {
@@ -120,7 +125,7 @@ body {
 	color: white;
 	font-size: 25px;
 	font-style: italic;
-	margin-top: 40px;
+	margin-top: 20px;
 }
 
 #lettersalreadyguessed{
