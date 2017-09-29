@@ -71,6 +71,7 @@ document.onkeydown = function(event) {
 // Checks the user's letter to see if it's a letter or not
 function checkLetters(userkey) {
 	var flag = false;
+	var result = false;
 	for (var i = 0; i < numBlanks; i++) {
  	
  		if(randomWord[i] === userkey) {
@@ -95,20 +96,19 @@ function checkLetters(userkey) {
 	    // Logging for testing.
 	    console.log(lettersInWord);
 	  }
+
 	  // If the letter doesn't exist at all...
-	  else {
+	   else {
 
-	  	//Make sure the letters don't overlap in the list of wrong letters
-	    if(userkey !== wrongGuesses[i]){
+		    // ..then we add the letter to the list of wrong letters, and we subtract one of the guesses.
+			wrongGuesses.push(userkey);
 
-	    // ..then we add the letter to the list of wrong letters, and we subtract one of the guesses.
-	    wrongGuesses.push(userkey);
-
-	    // numGuesses--;
-	    turns--;
-  		document.getElementById("turns").innerHTML = turns;
-  		}	
-	  }
+		    // numGuesses--;
+		    turns--;
+		    
+	  		document.getElementById("turns").innerHTML = turns;
+		  
+	  		}	
 
 	  roundComplete();
 
@@ -143,7 +143,6 @@ function roundComplete() {
 	}
 
 	// include condition where you won't win. this would be. turns === 0 so you lose and then startGame();
-	
 
 	  	if (turns==0) {
 	  		alert("You loose")
