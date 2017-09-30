@@ -144,7 +144,7 @@ function roundComplete() {
 
 	// include condition where you won't win. this would be. turns === 0 so you lose and then startGame();
 
-	  	if (turns==0) {
+	  	if (turns===0) {
 	  		alert("You loose")
 			var declineplay = confirm("Do you want to play again?")
 	  	} 
